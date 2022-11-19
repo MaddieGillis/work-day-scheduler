@@ -21,16 +21,16 @@ $(function () {
   console.log("It is " + currentTime + " Hour");
 
   $(".time-block").each(function () {
-    var plannerTime = parseInt($(this).attr("id").split("hour"));
-  })
-
-  console.log("currently: " + currentTime + "compared to: " + plannerTime);
-
-  if (currentTime > plannerTime) {
-    $(this).removeClass("present");
-    $(this).removeClass("future");
-    $(this).addClass("past");
-  } else if (currentTime == plannerTime) {
+    var plannerTime = $(this).attr("id").split("hour");
+    
+    
+    console.log("currently: " + currentTime + "compared to: " + plannerTime);
+    
+    if (currentTime > plannerTime) {
+      $(this).removeClass("present");
+      $(this).removeClass("future");
+      $(this).addClass("past");
+    } else if (currentTime == plannerTime) {
     $(this).removeClass("past");
     $(this).removeClass("future");
     $(this).addClass("present");
@@ -39,7 +39,8 @@ $(function () {
     $(this).removeClass("present");
     $(this).addClass("future");
   }
-
+})
+  
 
 }
 
