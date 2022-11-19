@@ -3,13 +3,53 @@
 // in the html.
 
 var currentDay = $('#currentDay');
+var timeBlockEl = $('.time-block');
 
 $(function () {
   
+  //Display of current date
   var presentDate = dayjs().format('dddd, MMMM D, YYYY');
   console.log(presentDate);
   currentDay.append(presentDate);
   console.log(currentDay);
+
+
+//Function to change color based on past present future
+  function colorChange() {
+
+  var currentTime = dayjs().hour();
+  console.log("It is " + currentTime + " Hour");
+
+  $(".time-block").each(function () {
+    var plannerTime = parseInt($(this).attr("id").split("hour"));
+  })
+
+  console.log("currently: " + currentTime + "compared to: " + plannerTime);
+
+  if (currentTime > plannerTime) {
+    $(this).removeClass("present");
+    $(this).removeClass("future");
+    $(this).addClass("past");
+  } else if (currentTime == plannerTime) {
+    $(this).removeClass("past");
+    $(this).removeClass("future");
+    $(this).addClass("present");
+  } else if (currentTime < plannerTime) {
+    $(this).removeClass("past");
+    $(this).removeClass("present");
+    $(this).addClass("future");
+  }
+
+
+}
+
+colorChange();
+  //Color coding block based on time
+  /*if (dayjs comaprison) {
+    //time color
+  } else if (dayjs comparison) {
+    time color
+  }*/
 
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -30,4 +70,6 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+
+
 });
